@@ -1,0 +1,101 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<mat-accordion class="example-headers-align">
+	<mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				Personal Details
+			</mat-panel-title>
+			<mat-panel-description>
+				Type your name email and age
+				<mat-icon>account_circle</mat-icon>
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<mat-grid-list cols="3" rowHeight="6:1">
+			<mat-grid-tile>
+				<mat-form-field>
+					<input matInput placeholder="First name">
+    </mat-form-field></mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput type="Email"  placeholder="Email">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile><mat-form-field>
+      <input matInput type="number" min="100000000" placeholder="Phone Number">
+    </mat-form-field></mat-grid-tile>
+  
+</mat-grid-list>
+ 
+    <mat-action-row>
+      <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       Delivery Address
+      </mat-panel-title>
+      <mat-panel-description>
+        Tell us where to deliver
+        <mat-icon>map</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+	<mat-grid-list cols="2" rowHeight="8:1">
+			<mat-grid-tile>
+				<mat-form-field>
+				<textarea matInput placeholder="Address"></textarea>
+    </mat-form-field></mat-grid-tile>
+     <mat-grid-tile>
+    <mat-form-field>
+      <input matInput type="text"  placeholder="City">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput type="text"  placeholder="State">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile><mat-form-field>
+      <input matInput type="number" min="1000" placeholder="PinCode">
+    </mat-form-field></mat-grid-tile>
+  
+</mat-grid-list>
+    <mat-action-row>
+      <button mat-raised-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       Payment Information
+      </mat-panel-title>
+      <mat-panel-description>
+        Inform the date you wish to travel
+        <mat-icon>date_range</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+    </mat-form-field>
+   <mat-radio-group class="example-radio-group" [(ngModel)]="pay">
+     <mat-panel-title>
+        Select Payment
+      </mat-panel-title>
+  <mat-radio-button class="example-radio-button" *ngFor="let pay of payment;" [value]="pay">
+    {{pay}} &nbsp;
+  </mat-radio-button>
+</mat-radio-group>
+<br>
+  <mat-slide-toggle>Recieve Notifications!</mat-slide-toggle>
+    <mat-action-row>
+      <button mat-raised-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-raised-button color="primary" (click)="nextStep()">End</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</mat-accordion>
+
